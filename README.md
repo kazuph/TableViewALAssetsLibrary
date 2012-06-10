@@ -3,7 +3,7 @@ TableViewALAssetsLibrary
 
 ALAssetsLibraryとTableViewでカメラロールの画像一覧を取得する（ソースは適当）
 ボタン送りに対応してます。
-![picture alt](photo.jpg "app view")
+![picture alt](https://github.com/kazuph/TableViewALAssetsLibrary/raw/master/photo.jpg "app view")
 
 作成手順
 ---
