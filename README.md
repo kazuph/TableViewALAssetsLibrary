@@ -16,6 +16,6 @@ ALAssetsLibraryとTableViewでカメラロールの画像一覧を取得する�
 1. あとは適当にボタンとかラベルとかを上部につける
 (ここまでがStoryBoardによるGUIでの操作)
 1. ProjectのSummary（BuildSettingsとかがあるところにある）の「Linked Frameworks and Libraries」から「AssetsLibrary.framework」を選択して追加
-1. あとはコードに読む
+1. あとはコード読む
 
 完全無料の完全無保証。
