@@ -30,7 +30,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"Boom!");
     // collect the photos
     NSMutableArray *collector = [[NSMutableArray alloc] initWithCapacity:0];
     ALAssetsLibrary *al = [StudyViewController defaultAssetsLibrary];
@@ -80,7 +79,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"Booooooom!TableView");
     static NSString *CellIndentifier = @"photolistCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndentifier];
@@ -91,14 +89,22 @@
     label.text = [NSString stringWithFormat:@"row %d",indexPath.row];
     for (int tag = 1; tag <= 3; tag++) {
         UIImageView *image = (UIImageView *)[cell viewWithTag:tag];
-        ALAsset *asset = [self.photos objectAtIndex:(3 * indexPath.row + (tag - 1) + (nowPage - 1) * 3 * rowNum )];
-        NSLog(@"at index = %d", (3 * indexPath.row + (tag - 1) + (nowPage - 1) * 3 * rowNum ));
-        
-        ALAssetRepresentation *representation = [asset defaultRepresentation];
-        NSURL *url = [representation url];
-        NSLog(@"url: %@", [url absoluteString]);
-        
-        [image setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
+        NSInteger assetNum = (3 * indexPath.row + (tag - 1) + (nowPage - 1) * 3 * rowNum );
+        if (self.photos.count > assetNum) {
+            ALAsset *asset = [self.photos objectAtIndex:assetNum];
+            if (asset) {
+                NSLog(@"at index = %d", (3 * indexPath.row + (tag - 1) + (nowPage - 1) * 3 * rowNum ));
+                
+                ALAssetRepresentation *representation = [asset defaultRepresentation];
+                NSURL *url = [representation url];
+                NSLog(@"url: %@", [url absoluteString]);
+                
+                [image setImage:[UIImage imageWithCGImage:[asset thumbnail]]];
+            } else {
+                NSLog(@"not found");
+                [image setImage:nil];
+            }
+        }
     }
     
     return cell;
