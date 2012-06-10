@@ -18,6 +18,4 @@ ALAssetsLibraryとTableViewでカメラロールの画像一覧を取得する�
 1. ProjectのSummary（BuildSettingsとかがあるところにある）の「Linked Frameworks and Libraries」から「AssetsLibrary.framework」を選択して追加
 1. あとはコードに読む
 
-あと著作権とか特になし。
 完全無料の完全無保証。
-使用する場合は自己責任で。
