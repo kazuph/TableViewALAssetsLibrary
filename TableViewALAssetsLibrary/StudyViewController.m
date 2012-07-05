@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad 
 {
-    NSLog(@"Booom!");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _photoListTableView.dataSource = self;
@@ -35,10 +34,8 @@
     ALAssetsLibrary *al = [StudyViewController defaultAssetsLibrary];
     
     [al enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                      usingBlock:^(ALAssetsGroup *group, BOOL *stop) 
-     {
-         [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop)
-          {
+                      usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+         [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop) {
               if (asset) {
                   [collector addObject:asset];
               }  
@@ -49,7 +46,7 @@
          NSLog(@"photo count = %d",self.photos.count);
          _date.text = [NSString stringWithFormat:@"%dpage/%dpage",nowPage ,((int)(self.photos.count / (3 * rowNum)) + 1) ];
      }
-                    failureBlock:^(NSError *error) { NSLog(@"Boom!!!");}
+                    failureBlock:^(NSError *error) { NSLog(@"ERROR!!!");}
      ];
     [super viewWillAppear:animated];
 }
